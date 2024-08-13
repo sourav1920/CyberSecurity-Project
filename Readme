@@ -1,0 +1,70 @@
+OBJECTIVE
+To preprocess and clean the dataset.
+To develop a machine learning model for detecting anomalies and intrusions.
+To evaluate the model's performance using appropriate metrics.
+The increasing importance of cybersecurity has made intrusion detection systems (IDS) essential in identifying malicious activities within a network. Anomalies in network traffic can signal potential security breaches, necessitating robust models to detect and address these issues.
+The challenge lies in developing a model capable of accurately identifying both known and unknown intrusions in a timely manner.
+
+OVERVIEW OF THE METHODOLOGY
+The methodology involved data preprocessing, feature engineering, and the implementation of a Random Forest Classifier. The model was evaluated using performance metrics, and results were visualized to assess the effectiveness of the approach.
+
+DATA COLLECTION AND PRE-PROCESSING
+Data Sources: The dataset was obtained from https://www.unb.ca/cic/datasets/ids-2017.html (INTRUSION DETECTION EVALUATION DATASET). It includes features relevant to network traffic and potential indicators of intrusion.
+Data Preprocessing Steps:
+Cleaning: Addressed missing values and handled outliers.
+Transformation: Applied scaling and encoding techniques.
+Feature Engineering: Constructed new features based on domain knowledge to enhance model performance.
+
+
+CHALLENGES ENCOUNTERED:
+Handling imbalanced data and extreme outliers were significant challenges. These were addressed through resampling techniques and careful selection of preprocessing methods.
+ANOMALY AND INTRUSION DETECTION USING MACHINE LEARNING
+
+METHODOLOGY
+Machine Learning Algorithms and Techniques Used: The Random Forest Classifier was selected due to its robustness and ability to handle complex datasets with high dimensionality.
+Justification for the Choice of Algorithms: Random Forest is well-suited for classification problems, particularly in scenarios where the dataset may contain noisy or irrelevant features.
+Model Training, Validation, and Evaluation: The dataset was split into training and testing sets. The model was trained using cross-validation, and performance was evaluated using accuracy, precision, recall, and F1-score.
+ANOMALY AND INTRUSION DETECTION USING MACHINE LEARNING
+
+RESULTS:
+Experimental Results:The Random Forest model achieved an accuracy of 0.995, with a precision of 0.9911, recall of 0.995, and F1-score of 0.993.
+Performance Metrics Used:
+Accuracy
+Precision
+Recall
+F1-score
+
+VISUALIZATIONS
+Interpretation of Results:
+The model performed well in detecting intrusions, with high precision and recall, indicating its effectiveness in identifying malicious activities.
+This model conducts dataset cleaning on CICIDS2017 in the following aspect:
+-remove space before each feature names
+-assign 0 for non-negative features when there is negative values
+-drop zero variance columns (only have 1 unique value)
+-remove inf, -inf, nan, and duplicate rows
+-drop columns with identical values
+However, two recent papers have been discussing that CIC-IDS-2017 and CSE-CIC-IDS-2018 have many errors throughout the dataset creation lifecycle, such as in attack orchestration, feature generation, documentation, and labeling.
+
+-Attack orchestration errors: These are errors that occur during the execution of the attack scenarios on the network.
+-Feature generation errors: These are errors that occur during the extraction of features from the network traffic using CICFlowMeter.
+-Documentation errors: These are errors that occur during the description and explanation of the datasets and their components.
+-Labeling errors: These are errors that occur during the assignment of labels to the network flows based on their class or category.
+Although the flows of attempted attacks have malicious intents,they don't have anomaly effect on the system due to the following reasons :
+
+Category 0 - No payload sent by attacker
+Category 1 - Port/System closed
+Category 2 - Attack Startup/Teardown Artefact
+Category 3 - No malicious payload
+Category 4 - Attack Artefact
+Category 5 - Attack Implemented Incorrectly
+Category 6 - Target System Unresponsive
+
+1.For these kinds of attempted labels, we have a choice to treat them as benign or malicious.
+2.In most cases of network intrusion detection, we process each flow separately, so the classifier can only see only flow at a time and doesn't know the context.
+3.As a result, they are re-labeled as BENIGN
+
+
+Conclusion
+Summary of Key Findings: The project successfully developed a model capable of detecting network intrusions with high accuracy.
+Achievement of Project Objectives: All objectives were met, with the model demonstrating strong performance in real-world scenarios.
+Recommendations for Future Work: Future work could focus on improving the model's handling of imbalanced data and exploring other algorithms for comparison.
